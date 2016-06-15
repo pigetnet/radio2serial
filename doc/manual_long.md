@@ -39,19 +39,23 @@
 | 2. Supervisor status      |                                            |
 | 2. radio log              |                                            |
 
+| /do/radio2serial/README.MD   |                        |
+|:-----------------------------|:-----------------------|
+| Info                         | [alpha] [undocumented] |
+
 | /do/radio2serial/restart   |                                               |
 |:---------------------------|:----------------------------------------------|
 | Info                       | [beta] [radio] [433Mhz] [serial] [supervisor] |
 | Description                | Restart radio2serial                          |
 | Usage                      | /do/radio2serial/restart                      |
 
-| /do/radio2serial/send   |                                             |
-|:------------------------|:--------------------------------------------|
-| Info                    | [beta] [socket] [serial] [radio] [433Mhz]   |
-| Description             | Send radiomessage using socket              |
-| Usage                   | /do/radio2serial/send radiomessage          |
-| Example                 | /radio/text/hello world                     |
-| Variables               | port=$(cat /user/config/radio2serial/port), |
+| /do/radio2serial/send   |                                               |
+|:------------------------|:----------------------------------------------|
+| Info                    | [beta] [socket] [serial] [radio] [433Mhz]     |
+| Description             | Send radiomessage using socket                |
+| Usage                   | /do/radio2serial/send radiomessage            |
+| Example                 | /do/radio2serial/send /radio/text/hello world |
+| Variables               | port=$(cat /user/config/radio2serial/port),   |
 
 | /do/radio2serial/sendText   |                                                                                                                                    |
 |:----------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|

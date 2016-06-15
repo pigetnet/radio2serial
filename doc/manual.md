@@ -28,11 +28,11 @@
 | Description                | Restart radio2serial                          |
 | Info                       | [beta] [radio] [433Mhz] [serial] [supervisor] |
 
-| /do/radio2serial/send   |                                           |
-|:------------------------|:------------------------------------------|
-| Description             | Send radiomessage using socket            |
-| Example                 | /radio/text/hello world                   |
-| Info                    | [beta] [socket] [serial] [radio] [433Mhz] |
+| /do/radio2serial/send   |                                               |
+|:------------------------|:----------------------------------------------|
+| Description             | Send radiomessage using socket                |
+| Example                 | /do/radio2serial/send /radio/text/hello world |
+| Info                    | [beta] [socket] [serial] [radio] [433Mhz]     |
 
 | /do/radio2serial/sendText   |                                                                         |
 |:----------------------------|:------------------------------------------------------------------------|
