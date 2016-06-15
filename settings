@@ -1,1 +1,10 @@
-nano /user/config/radio2serial/radio.json
+#!/bin/bash
+if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+		/show/messagebox "$0"
+		/show/info "[beta] [json] [serial] [nano]"
+		/show/usageDescription "Modify radio2serial configuration"
+		/show/usage "$0"
+		exit 1
+else
+	nano /user/config/radio2serial/radio2serial.json
+fi

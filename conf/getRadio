@@ -1,0 +1,34 @@
+#!/bin/bash
+# radio2serial is only able to send/receive codes and output it on a socket and/or start a command
+# However each times a message is received from the arduino is will launch this commands
+# This isn't really a good solution but it should give you a way to experiment with radio
+
+# You can change which commands is started inside /user/config/radio2serial/radio2serial.json
+
+
+#### CONVERTER
+# Use a convertor if you want to translate a radio code to a more humanly understandable message
+# For example /do/radio/new/1234/0/on could be converted to Kitchen has been turn on
+
+
+#Here is an example on how to convert json data to readable text
+text=$(/do/radio2serial/python/radio2text.py "$1")
+
+#### Debug
+echo $text
+
+#### Notifications
+
+# Here is example to be notify when a radio code is received using growl
+#Send radio log to growl
+#if [[ ! -z $text ]];then
+#	/do/growl/send "r.local" "test" "Radio" "$text"
+#fi
+
+# Database logging Examples
+# We can log our radio codes inside a database
+# This can be useful if you want to make sensors
+
+# Triggers commands Examples
+# We can control our Raspberry Pi using arduino or radio remote
+

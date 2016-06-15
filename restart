@@ -1,1 +1,10 @@
-supervisorctl restart radio2serial
+#!/bin/bash
+if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+		/show/messagebox "$0"
+		/show/info "[beta] [radio] [433Mhz] [serial] [supervisor]"
+		/show/usageDescription "Restart radio2serial"
+		/show/usage "$0"
+		exit 1
+else
+	supervisorctl restart radio2serial
+fi

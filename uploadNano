@@ -1,7 +1,27 @@
 #!/bin/bash
+if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+		/show/messagebox "$0"
+		/show/info "[alpha] [git] [platformio] [arduino] [warning]"
+		/show/usageDescription "Download and upload radio2serial server and arduino"
+		/show/usage "$0"
+		exit 1
+else
+	#Stop server
+	/do/radio2serial/stop
+	
+	#Install platformio if not installed
+	if [ -d /do/platformio ];then
+		/pi/install platformio
+	fi
 
-/do/radio2serial/stop
-/pi/install platformio
-/do/platformio/download radio2serial
-/do/platformio/runNano radio2serial
-/do/radio2serial/start
+	#Download radio2serial
+	if [ -d /user/arduino/radio2serial ];then
+		/do/platformio/download radio2serial
+	fi
+	
+	#Upload radio2serial
+	/do/platformio/runNano radio2serial
+	
+	#Restart server
+	/do/radio2serial/start
+fi

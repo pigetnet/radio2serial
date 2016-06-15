@@ -1,21 +1,28 @@
 #!/bin/bash
+if [ $# -ne 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+		/show/messagebox "$0"
+		/show/info "[beta] [socket] [serial] [radio] [433Mhz] [string_manipulation] [iconv]"
+		/show/usageDescription "Send text with radio using socket"
+		/show/usage "$0 text"
+		/show/example "$0 \"You can type long text with strange accent\""
+		exit 1
+else
+	string=$(echo $1 | iconv -f utf-8 -t us-ascii//TRANSLIT)
+	len=${#string}
+	sleep 1
+	while [ $len -ge 59 ] ;
+	do
+	   #lets split this up so that its a maximum of 99 characters
+	    tmp=${string:0:59}
+	    string=${string:59}
 
-string=$(echo $1 | iconv -f utf-8 -t us-ascii//TRANSLIT)
-len=${#string}
-sleep 1
-while [ $len -ge 59 ] ;
-do
-   #lets split this up so that its a maximum of 99 characters
-    tmp=${string:0:59}
-    string=${string:59}
+	    echo $string
+	    sleep 1
 
-    echo $string
-    sleep 1
+	    len=${#string}
+	    /do/radio2serial/send "/radio/text/$tmp"
+	    sleep 1
+	done
 
-    len=${#string}
-    /do/radio2serial/send "/radio/text/$tmp"
-    sleep 1
-done
-
-/do/radio2serial/send "/radio/text/$string"
-
+	/do/radio2serial/send "/radio/text/$string"
+fi

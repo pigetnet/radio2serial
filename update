@@ -1,3 +1,14 @@
 #!/bin/bash
-cd /do/radio2serial;git pull
-cd /user/arduino/radio2serial;git pull
+if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+		/show/messagebox "$0"
+		/show/info "[alpha] [git] [platformio] [arduino] [warning]"
+		/show/usageDescription "Update radio2serial server and arduino"
+		/show/usage "$0"
+		exit 1
+else
+	/do/radio2serial/stop
+	cd /do/radio2serial;git pull
+	cd /user/arduino/radio2serial;git pull
+	/do/platformio/runNano radio2serial
+	/do/radio2serial/start
+fi

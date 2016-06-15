@@ -1,5 +1,12 @@
 #!/bin/bash
-/do/radio2serial/send "/info"
-
-message=$("/do/radio2serial/listen")
-python /do/radio2serial/python/radio2text.py "$message"
+if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+		/show/messagebox "$0"
+		/show/info "[beta] [radio] [433Mhz] [serial] [socket] [arduino]"
+		/show/usageDescription "Get arduino state"
+		/show/usage "$0"
+		exit 1
+else
+	/do/radio2serial/send "/info"
+	message=$("/do/radio2serial/listen")
+	python /do/radio2serial/python/radio2text.py "$message"
+fi

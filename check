@@ -1,5 +1,12 @@
 #!/bin/bash
-exec python -u /do/radio2serial/python/serialjson.py
-
+if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+		/show/messagebox "$0"
+		/show/info "[beta] [radio] [433Mhz] [python]"
+		/show/usageDescription "Start radio2serial server in non-daemon mode"
+		/show/usage "$0"
+		exit 1
+else
+	exec python -u /do/radio2serial/python/serialjson.py
+fi
 
 
