@@ -1,0 +1,7 @@
+#!/bin/bash
+
+/do/radio2serial/stop
+/pi/install platformio
+/do/platformio/download radio2serial
+/do/platformio/runNano radio2serial
+/do/radio2serial/start

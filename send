@@ -1,0 +1,4 @@
+#!/bin/bash
+message="$1"
+port=$(cat /user/config/radio2serial/port)
+/net/socketSend $port "$message"

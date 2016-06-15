@@ -1,0 +1,3 @@
+#!/bin/bash
+port=$(cat /user/config/radio2serial/port)
+fuser -k $port/tcp

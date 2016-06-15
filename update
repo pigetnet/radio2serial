@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /do/radio2serial;git pull
+cd /user/arduino/radio2serial;git pull

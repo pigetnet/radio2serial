@@ -1,0 +1,5 @@
+#!/bin/bash
+exec python -u /do/radio2serial/python/serialjson.py
+
+
+

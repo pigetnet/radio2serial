@@ -1,0 +1,5 @@
+#!/bin/bash
+port=$(cat /user/config/radio2serial/port)
+/net/socketRead $port
+
+

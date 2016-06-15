@@ -1,0 +1,5 @@
+#!/bin/bash
+/do/radio2serial/send "/info"
+
+message=$("/do/radio2serial/listen")
+python /do/radio2serial/python/radio2text.py "$message"
