@@ -47,7 +47,10 @@
 
 | /do/radio2serial/send   |                                             |
 |:------------------------|:--------------------------------------------|
-| Info                    | [alpha] [undocumented]                      |
+| Info                    | [beta] [socket] [serial] [radio] [433Mhz]   |
+| Description             | Send radiomessage using socket              |
+| Usage                   | /do/radio2serial/send radiomessage          |
+| Example                 | /radio/text/hello world                     |
 | Variables               | port=$(cat /user/config/radio2serial/port), |
 
 | /do/radio2serial/sendText   |                                                                                                                                    |

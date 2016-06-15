@@ -1,4 +1,13 @@
 #!/bin/bash
-message="$1"
-port=$(cat /user/config/radio2serial/port)
-/net/socketSend $port "$message"
+if [ $# -ne 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+		/show/messagebox "$0"
+		/show/info "[beta] [socket] [serial] [radio] [433Mhz]"
+		/show/usageDescription "Send radiomessage using socket"
+		/show/usage "$0 radiomessage"
+		/show/example "/radio/text/hello world"
+		exit 1
+else
+	message="$1"
+	port=$(cat /user/config/radio2serial/port)
+	/net/socketSend $port "$message"
+fi
