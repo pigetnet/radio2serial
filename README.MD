@@ -1,4 +1,4 @@
-# piget-led
+# piget-radio2serial
 Control radio 433 and send text using an arduino
 
 ````
