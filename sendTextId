@@ -1,0 +1,5 @@
+#!/bin/bash
+name=$(/show/name)
+/do/radio2serial/sendText "$name:$1"
+
+

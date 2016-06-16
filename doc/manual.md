@@ -40,6 +40,10 @@
 | Example                     | /do/radio2serial/sendText \You can type long text with strange accent\  |
 | Info                        | [beta] [socket] [serial] [radio] [433Mhz] [string_manipulation] [iconv] |
 
+| /do/radio2serial/sendTextId   |                        |
+|:------------------------------|:-----------------------|
+| Info                          | [alpha] [undocumented] |
+
 | /do/radio2serial/settings   |                                   |
 |:----------------------------|:----------------------------------|
 | Description                 | Modify radio2serial configuration |

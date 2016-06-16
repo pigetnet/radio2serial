@@ -32,3 +32,23 @@ echo $text
 # Triggers commands Examples
 # We can control our Raspberry Pi using arduino or radio remote
 
+
+#Broadcast information when a code is received
+#If you use this on multiples Raspberry Pi you must add a sleep to avoid
+#sending information at the same time
+
+name=$(/show/name)
+cpuTemp=$(/show/cpuTemp)
+ip=$(/show/ipAddress)
+
+#When an hello message is sent by an arduino , broadcast information
+if [[ $text == "hello" ]];then
+        /do/radio2serial/sendText "My name is $name, my IP is $ip and my temp is $cpuTemp, it is $(date)"
+fi
+
+#When a remote is pressed we broadcast our information
+#Type /do/radio2serial/log to get radio code
+#if [[ $text == "/radio/old/177121" ]];then
+#        /do/radio2serial/sendText "My name is $name, my IP is $ip and my temp is $cpuTemp, it is $(date)"
+#fi
+

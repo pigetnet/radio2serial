@@ -66,6 +66,12 @@
 | Variables                   | string=$(echo $1 | iconv -f utf-8 -t us-ascii//TRANSLIT), len=${#string}, tmp=${string:0:59}, string=${string:59}, len=${#string}, |
 | Modules                     | /do/radio2serial/send "/radio/text/$tmp", /do/radio2serial/send "/radio/text/$string",                                             |
 
+| /do/radio2serial/sendTextId   |                                       |
+|:------------------------------|:--------------------------------------|
+| Info                          | [alpha] [undocumented]                |
+| Variables                     | name=$(/show/name),                   |
+| Modules                       | /do/radio2serial/sendText "$name:$1", |
+
 | /do/radio2serial/settings   |                                   |
 |:----------------------------|:----------------------------------|
 | Info                        | [beta] [json] [serial] [nano]     |
