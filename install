@@ -6,49 +6,60 @@ if [ $# -ne 0 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
 		/show/usage "$0"
 		exit 1
 else
-	echo -ne $OK
+
+#LOGO
+
+echo -ne $ERR
 
 cat<<EOF
-██████╗  █████╗ ██████╗ ██╗ ██████╗ ██████╗ ███████╗███████╗██████╗ ██╗ █████╗ ██╗
-██╔══██╗██╔══██╗██╔══██╗██║██╔═══██╗╚════██╗██╔════╝██╔════╝██╔══██╗██║██╔══██╗██║
-██████╔╝███████║██║  ██║██║██║   ██║ █████╔╝███████╗█████╗  ██████╔╝██║███████║██║
-██╔══██╗██╔══██║██║  ██║██║██║   ██║██╔═══╝ ╚════██║██╔══╝  ██╔══██╗██║██╔══██║██║
-██║  ██║██║  ██║██████╔╝██║╚██████╔╝███████╗███████║███████╗██║  ██║██║██║  ██║███████╗
-╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝
+██████╗  █████╗ ██████╗ ██╗ ██████╗
+██╔══██╗██╔══██╗██╔══██╗██║██╔═══██╗
+██████╔╝███████║██║  ██║██║██║   ██║
+██╔══██╗██╔══██║██║  ██║██║██║   ██║
+██║  ██║██║  ██║██████╔╝██║╚██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝ 
 EOF
 
-	echo -ne $NORMAL
+echo -ne $NORMAL
 
+#Copy configuration
 	/system/makedir /user/config/radio2serial
 	cp /do/radio2serial/conf/port /user/config/radio2serial
 	cp /do/radio2serial/conf/radio2serial.json /user/config/radio2serial
 	cp /do/radio2serial/conf/getRadio /user/scripts/getRadio
 
+#Install Supervisor
 	/system/install supervisor
-	cat <<\EOF > /etc/supervisor/conf.d/radio2serial.conf
-	[program:radio2serial]
-	command=/do/radio2serial/check
-	autostart=true
-	autorestart=true
-	stdout_logfile=/var/log/radio2serial.log
-	redirect_stderr=true
-	logfile_maxbytes=10MB
-	logfile_backups=0
-	EOF
+
+#Create configuration
+cat <<\EOF > /etc/supervisor/conf.d/radio2serial.conf
+[program:radio2serial]
+command=/do/radio2serial/check
+autostart=true
+autorestart=true
+stdout_logfile=/var/log/radio2serial.log
+redirect_stderr=true
+logfile_maxbytes=10MB
+logfile_backups=0
+EOF
+
+#Enable configuration
 	supervisorctl reread
 	supervisorctl update
 
-	echo -ne $ERR
 
+#LOGO
+echo -ne $OK
 cat<<EOF
-██████╗  █████╗ ██████╗ ██╗ ██████╗ ██████╗ ███████╗███████╗██████╗ ██╗ █████╗ ██╗
-██╔══██╗██╔══██╗██╔══██╗██║██╔═══██╗╚════██╗██╔════╝██╔════╝██╔══██╗██║██╔══██╗██║
-██████╔╝███████║██║  ██║██║██║   ██║ █████╔╝███████╗█████╗  ██████╔╝██║███████║██║
-██╔══██╗██╔══██║██║  ██║██║██║   ██║██╔═══╝ ╚════██║██╔══╝  ██╔══██╗██║██╔══██║██║
-██║  ██║██║  ██║██████╔╝██║╚██████╔╝███████╗███████║███████╗██║  ██║██║██║  ██║███████╗
-╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝
+██████╗  █████╗ ██████╗ ██╗ ██████╗
+██╔══██╗██╔══██╗██╔══██╗██║██╔═══██╗
+██████╔╝███████║██║  ██║██║██║   ██║
+██╔══██╗██╔══██║██║  ██║██║██║   ██║
+██║  ██║██║  ██║██████╔╝██║╚██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝ 
 EOF
 
+#Type final instructions
 	echo -ne $NORMAL
 	/show/listecho "Type /do/radio2serial/uploadNano to setup an arduino" $OK
 fi
