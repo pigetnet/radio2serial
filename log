@@ -9,7 +9,7 @@ else
 	/show/description "radio Status"
 	/show/listecho  "PRESS [CTRL-C] to quit" $WARN
 	/show/listecho "Supervisor status" $OK
-	supervisorctl status radio
+	supervisorctl status radio2serial
 	/show/description "radio log" $OK
 	tail -f /var/log/radio2serial.log
 fi
