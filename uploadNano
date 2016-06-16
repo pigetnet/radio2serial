@@ -10,12 +10,12 @@ else
 	/do/radio2serial/stop
 	
 	#Install platformio if not installed
-	if [ -d /do/platformio ];then
+	if [ ! -d /do/platformio ];then
 		/pi/install platformio
 	fi
 
 	#Download radio2serial
-	if [ -d /user/arduino/radio2serial ];then
+	if [ ! -d /user/arduino/radio2serial ];then
 		/do/platformio/download radio2serial
 	fi
 	

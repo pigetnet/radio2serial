@@ -99,10 +99,10 @@
 | Usage                     | /do/radio2serial/update                                                                                           |
 | Modules                   | /do/radio2serial/stop, cd /do/radio2serial;git pull, /do/platformio/runNano radio2serial, /do/radio2serial/start, |
 
-| /do/radio2serial/uploadNano   |                                                                                                                                                          |
-|:------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Info                          | [alpha] [git] [platformio] [arduino] [warning]                                                                                                           |
-| Description                   | Download and upload radio2serial server and arduino                                                                                                      |
-| Usage                         | /do/radio2serial/uploadNano                                                                                                                              |
-| Modules                       | /do/radio2serial/stop, if [ -d /do/platformio ];then, /do/platformio/download radio2serial, /do/platformio/runNano radio2serial, /do/radio2serial/start, |
+| /do/radio2serial/uploadNano   |                                                                                                                                                            |
+|:------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Info                          | [alpha] [git] [platformio] [arduino] [warning]                                                                                                             |
+| Description                   | Download and upload radio2serial server and arduino                                                                                                        |
+| Usage                         | /do/radio2serial/uploadNano                                                                                                                                |
+| Modules                       | /do/radio2serial/stop, if [ ! -d /do/platformio ];then, /do/platformio/download radio2serial, /do/platformio/runNano radio2serial, /do/radio2serial/start, |
 
