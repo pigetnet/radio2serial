@@ -8,6 +8,7 @@ if [ $# -ne 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
 		exit 1
 else
 	message="$1"
+	/show/listecho $message $OK
 	port=$(cat /user/config/radio2serial/port)
 	/net/socketSend $port "$message"
 fi
